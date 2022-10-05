@@ -13,7 +13,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@SpringBootApplication
 @RestController
 @CrossOrigin(origins = "*")
 public class PlayerController {
