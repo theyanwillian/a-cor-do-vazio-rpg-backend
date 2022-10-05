@@ -4,6 +4,7 @@ import br.com.acordovaziobackend.exception.ResourceNotFoundException;
 import br.com.acordovaziobackend.model.Player;
 import br.com.acordovaziobackend.repository.PlayerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,9 +13,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@SpringBootApplication
 @RestController
-@RequestMapping("/a_cor_do_vazio")
+@CrossOrigin(origins = "*")
 public class PlayerController {
     @Autowired
     private PlayerRepository playerRepository;
