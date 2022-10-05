@@ -1,20 +1,19 @@
 package br.com.acordovaziobackend.controller;
 
 import br.com.acordovaziobackend.dto.PlayerDTO;
-import br.com.acordovaziobackend.exception.ResourceNotFoundException;
-import br.com.acordovaziobackend.model.Player;
 import br.com.acordovaziobackend.service.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "*")
 public class PlayerController {
 
     @Autowired
@@ -24,7 +23,9 @@ public class PlayerController {
     @GetMapping("/players")
     public ResponseEntity<List<PlayerDTO>> getAllPlayers(Sort sort){
         List<PlayerDTO> players = playerService.getAllPlayers(sort);
-        return ResponseEntity.ok().header("Access-Control-Allow-Origin", "*").body(players);
+        HttpHeaders headers = new HttpHeaders();
+        headers.add(HttpHeaders.CONTENT_TYPE, "application/json; charset=UTF-8");
+        return ResponseEntity.ok().headers(headers).body(players);
     }
 //
 //    @PostMapping("/players")
