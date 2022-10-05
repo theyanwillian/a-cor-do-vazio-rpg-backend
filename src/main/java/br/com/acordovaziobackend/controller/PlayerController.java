@@ -6,14 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.net.URISyntaxException;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "*")
 public class PlayerController {
 
     @Autowired
@@ -21,13 +20,9 @@ public class PlayerController {
 
 
     @GetMapping("/players")
-    public ResponseEntity<List<PlayerDTO>> getAllPlayers(Sort sort){
+    public ResponseEntity<List<PlayerDTO>> getAllPlayers(Sort sort) throws URISyntaxException {
         List<PlayerDTO> players = playerService.getAllPlayers(sort);
         HttpHeaders headers = new HttpHeaders();
-        headers.add(HttpHeaders.CONTENT_TYPE, "application/json; charset=UTF-8");
-        headers.add("X-Fsl-Location", "/");
-        headers.add("X-Fsl-Response-Code", "302");
-        headers.add("Access-Control-Allow-Origin", "*");
         return ResponseEntity.ok().headers(headers).body(players);
     }
 //
