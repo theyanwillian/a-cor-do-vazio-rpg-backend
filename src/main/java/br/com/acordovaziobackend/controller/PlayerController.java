@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@CrossOrigin(origins = "*")
+@CrossOrigin
 public class PlayerController {
     @Autowired
     private PlayerRepository playerRepository;
