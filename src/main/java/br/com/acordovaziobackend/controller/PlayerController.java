@@ -25,6 +25,9 @@ public class PlayerController {
         List<PlayerDTO> players = playerService.getAllPlayers(sort);
         HttpHeaders headers = new HttpHeaders();
         headers.add(HttpHeaders.CONTENT_TYPE, "application/json; charset=UTF-8");
+        headers.add("X-Fsl-Location", "/");
+        headers.add("X-Fsl-Response-Code", "302");
+        headers.add("Access-Control-Allow-Origin", "*");
         return ResponseEntity.ok().headers(headers).body(players);
     }
 //
