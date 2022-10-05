@@ -4,7 +4,6 @@ import br.com.acordovaziobackend.exception.ResourceNotFoundException;
 import br.com.acordovaziobackend.model.Player;
 import br.com.acordovaziobackend.repository.PlayerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +13,6 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@CrossOrigin(origins = "*")
 public class PlayerController {
     @Autowired
     private PlayerRepository playerRepository;
