@@ -4,7 +4,6 @@ import br.com.acordovaziobackend.exception.ResourceNotFoundException;
 import br.com.acordovaziobackend.model.Player;
 import br.com.acordovaziobackend.repository.PlayerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +12,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@SpringBootApplication
 @RestController
 @CrossOrigin(origins = "*")
 public class PlayerController {
@@ -25,6 +23,12 @@ public class PlayerController {
         return playerRepository.findAll(sort);
     }
 
+    @GetMapping("/players/filters")
+    public List<Player> getAllPlayersFilter(Sort sort,
+                                      String nome,
+                                      String classe){
+        return playerRepository.findAllFilters(nome, classe, sort);
+    }
     @PostMapping("/players")
     public Player createPlayer(@RequestBody Player player) {
         return playerRepository.save(player);
