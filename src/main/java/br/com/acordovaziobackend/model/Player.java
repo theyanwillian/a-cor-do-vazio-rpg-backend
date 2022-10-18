@@ -1,23 +1,28 @@
 package br.com.acordovaziobackend.model;
 
+import com.sun.istack.NotNull;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Getter
 @Setter
+@NoArgsConstructor
 @Table(name = "player")
-public class Player {
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+public class Player implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    @EqualsAndHashCode.Include
+    private Long id;
 
     @Column(name = "nome")
     private String nome;
@@ -76,4 +81,7 @@ public class Player {
     @Column(name = "classe_two")
     private String classeTwo;
 
+    @ManyToOne
+    @JoinColumn(name="player_id")
+    private Team team;
 }
