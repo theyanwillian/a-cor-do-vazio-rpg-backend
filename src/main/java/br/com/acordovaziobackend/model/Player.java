@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 @Entity
 @Getter
@@ -80,6 +81,9 @@ public class Player implements Serializable {
 
     @Column(name = "classe_two")
     private String classeTwo;
+
+    @Column(name = "score")
+    private BigDecimal score;
 
     @ManyToOne
     @JoinColumn(name="player_id")
