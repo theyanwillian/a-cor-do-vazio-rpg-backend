@@ -60,7 +60,7 @@ public class Team implements Serializable {
     private Long tecnico;
 
     @OneToMany(orphanRemoval = true, fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
-    @JoinColumn(name = "player_id")
+    @JoinColumn(name = "team_id")
     private List<Player> players;
 
 }

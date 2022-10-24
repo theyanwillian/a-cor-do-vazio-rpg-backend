@@ -86,6 +86,6 @@ public class Player implements Serializable {
     private BigDecimal score;
 
     @ManyToOne
-    @JoinColumn(name="player_id")
+    @JoinColumn(name="team_id")
     private Team team;
 }
